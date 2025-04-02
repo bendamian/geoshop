@@ -41,7 +41,10 @@
           <p class="is-size-6 has-text-grey">Rs {{ product.price }}</p>
 
           <!-- Add to cart button -->
-          <button class="button is-medium is-fullwidth">Add to Cart</button>
+          <router-link :to="`/${product.category.slug}/${product.slug}`"
+   class="button is-link is-fullwidth">
+          {{ product.name }}
+        </router-link>
         </div>
       </div>
     </div>
