@@ -1,13 +1,14 @@
 <template>
   <div class="page-product">
-    <div class="columns is-multiline">
-      <div class="column is-9">
+    <div class="columns is-multiline ">
+      <figure class="column is-9">
         <ProductImage :image="product.get_image" />
-        <h1 class="title">{{ product.name }}</h1>
-        <p>{{ product.description }}</p>
-      </div>
-
-      <ProductInfo :price="product.price" :quantity="quantity" @add-to-cart="addToCart" />
+        <figcaption>
+          <ProductDetails :name="product.name" :description="product.description" />
+        </figcaption>
+      </figure>
+      <ProductCart :quantity="quantity" @add-to-cart="addToCart" />
+      <ProductPrice :price="product.price" />
     </div>
   </div>
 </template>
@@ -15,13 +16,17 @@
 <script>
 import axios from 'axios'
 import ProductImage from '@/components/ProductImage.vue'
-import ProductInfo from '@/components/ProductInfo.vue'
+import ProductPrice from '@/components/ProductPrice.vue'
+import ProductCart from '@/components/ProductCart.vue'
+import ProductDetails from '@/components/ProductDetails.vue'
 
 export default {
   name: 'ProductView',
   components: {
     ProductImage,
-    ProductInfo,
+    ProductPrice,
+    ProductCart,
+    ProductDetails,
   },
   data() {
     return {
